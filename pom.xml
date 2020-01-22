@@ -29,6 +29,7 @@
         <kubernetes-client.version>4.4.2</kubernetes-client.version>
         <springdoc-openapi-ui.version>1.2.18</springdoc-openapi-ui.version>
         <retrofit.version>2.7.0</retrofit.version>
+        <easy-rules.version>3.4.0</easy-rules.version>
     </properties>
 
     <modules>
@@ -104,6 +105,11 @@
                 <groupId>com.squareup.retrofit2</groupId>
                 <artifactId>converter-jackson</artifactId>
                 <version>${retrofit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jeasy</groupId>
+                <artifactId>easy-rules-core</artifactId>
+                <version>${easy-rules.version}</version>
             </dependency>
             <!-- AWS Java SDK BOM -->
             <dependency>

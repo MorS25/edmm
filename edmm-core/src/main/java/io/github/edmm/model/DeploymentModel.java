@@ -39,7 +39,6 @@ public final class DeploymentModel {
 
     private final Map<String, RootComponent> componentMap;
     private final Graph<RootComponent, RootRelation> topology = new DirectedMultigraph<>(RootRelation.class);
-    private Set<Graph<RootComponent, RootRelation>> stacks = new HashSet<>();
 
     public DeploymentModel(String name, EntityGraph graph) {
         this.name = name;
@@ -114,14 +113,12 @@ public final class DeploymentModel {
                 .stream()
                 .filter(v -> dependencyGraph.inDegreeOf(v) == 0)
                 .collect(Collectors.toList());
-
         Set<Graph<RootComponent, RootRelation>> stacks = new HashSet<>();
         stackSources.forEach(source -> {
             Graph<RootComponent, RootRelation> stack = new DirectedMultigraph<>(RootRelation.class);
             constructGraph(dependencyGraph, source, stack);
             stacks.add(stack);
         });
-
         return stacks;
     }
 
